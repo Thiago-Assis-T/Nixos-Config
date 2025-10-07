@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   programs.neovim.defaultEditor = true;
   programs.starship.enable = true;
+  environment.systemPackages = with pkgs; [ php php84Packages.composer ];
   programs.nixvim = {
     enable = true;
     enableMan = true;
@@ -24,8 +25,7 @@
       alejandra
       nixfmt-classic
       nixpkgs-fmt
-      php83Packages.php-cs-fixer
-      php83Packages.php-codesniffer
+      pretty-php
       clang
       clang-analyzer
       clang-tools
@@ -127,6 +127,11 @@
         enable = true;
         inlayHints = true;
         servers = {
+          intelephense = {
+            enable = true;
+            autostart = true;
+            package = pkgs.intelephense;
+          };
           ts_ls = {
             enable = true;
             autostart = true;
@@ -152,10 +157,6 @@
             autostart = true;
           };
           nixd = {
-            enable = true;
-            autostart = true;
-          };
-          phan = {
             enable = true;
             autostart = true;
           };
@@ -215,7 +216,7 @@
             html = [ "prettierd" ];
             css = [ "prettierd" ];
             js = [ "prettierd" ];
-            php = [ "php-cs-fixer" ];
+            php = [ "pretty-php" ];
             "_" = [ "squeeze_blanks" "trim_whitespace" "trim_newlines" ];
           };
           format_on_save = {
@@ -234,7 +235,7 @@
           nix = [ "nix" "deadnix" ];
           bash = [ "bash" ];
           c = [ "clang-tidy" ];
-          php = [ "php" "phpcs" ];
+          php = [ "php" ];
           text = [ "vale" ];
         };
       };
