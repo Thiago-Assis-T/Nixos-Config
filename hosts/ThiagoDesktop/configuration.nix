@@ -14,6 +14,7 @@
     ../modules/nix.nix
     ../modules/btrfs.nix
     ../modules/steam.nix
+    ../modules/podman.nix
   ];
 
   networking.hostName = "ThiagoDesktop"; # Define your hostname.

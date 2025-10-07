@@ -13,6 +13,7 @@
     ../modules/neovim.nix
     ../modules/nix.nix
     ../modules/btrfs.nix
+    ../modules/podman.nix
   ];
 
   networking.hostName = "ThiagoLaptop"; # Define your hostname.
