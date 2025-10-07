@@ -8,7 +8,7 @@
     ../modules/locales.nix
     ../modules/bootloader.nix
     ../modules/loginManager.nix
-    ../modules/powerManagement.nix
+    #../modules/powerManagement.nix
     ../modules/rustRewrites.nix
     ../modules/neovim.nix
     ../modules/nix.nix

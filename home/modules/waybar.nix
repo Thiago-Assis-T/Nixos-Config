@@ -52,7 +52,7 @@
         layer = "top";
         position = "top";
         spacing = 5;
-        output = [ "eDP-1" ];
+        #output = [ "eDP-1" ];
         modules-left = [ "river/tags" "cpu" "temperature" "memory" ];
         modules-center = [ "clock" ];
         modules-right =

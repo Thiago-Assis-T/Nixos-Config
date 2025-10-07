@@ -2,9 +2,8 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { lib, pkgs, modulesPath, ... }: {
-  imports = [ 
- ./disk-config.nix
-  (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports =
+    [ ./disk-config.nix (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];

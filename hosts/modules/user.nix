@@ -5,8 +5,16 @@
   };
   users.users.thiago = {
     isNormalUser = true;
-    extraGroups =
-      [ "seat" "sound" "power" "video" "render" "input" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "seat"
+      "sound"
+      "power"
+      "video"
+      "render"
+      "input"
+      "networkmanager"
+    ];
     packages = with pkgs; [ discord-canary git ];
   };
 }
