@@ -22,7 +22,7 @@
         inputs.disko.nixosModules.disko
         inputs.nixvim.nixosModules.nixvim
         inputs.home-manager.nixosModules.home-manager
-        ./hosts/ThiagoLaptop/configuration.nix
+        ./hosts/ThiagoDesktop/configuration.nix
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
