@@ -20,7 +20,9 @@
   # networking.interfaces.enp8s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp7s0.useDHCP = lib.mkDefault true;
 
+  services.fwupd.enable = true;
   hardware = {
+    enableAllFirmware = true;
     cpu.amd.updateMicrocode = true;
     amdgpu = {
       opencl.enable = true;
