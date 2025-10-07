@@ -5,7 +5,8 @@
   };
   users.users.thiago = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "seat" "wheel" "video" "render" ];
-    packages = with pkgs; [ git ];
+    extraGroups =
+      [ "seat" "sound" "power" "video" "render" "input" "networkmanager" ];
+    packages = with pkgs; [ discord-canary git ];
   };
 }

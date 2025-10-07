@@ -14,12 +14,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs @ {nixpkgs, ...}: {
+  outputs = inputs@{ nixpkgs, ... }: {
+    nixosConfigurations.ThiagoDesktop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        inputs.disko.nixosModules.disko
+        inputs.nixvim.nixosModules.nixvim
+        inputs.home-manager.nixosModules.home-manager
+        ./hosts/ThiagoLaptop/configuration.nix
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.thiago = ./home/desktop.nix;
+        }
+      ];
+    };
     nixosConfigurations.ThiagoLaptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
-      };
+      specialArgs = { inherit inputs; };
       modules = [
         inputs.disko.nixosModules.disko
         inputs.nixvim.nixosModules.nixvim
