@@ -146,7 +146,7 @@
       };
       web-devicons.enable = true;
       lualine.enable = true;
-      vim-css-color.enable = true;
+      colorizer.enable = true;
       lsp = {
         enable = true;
         inlayHints = true;
