@@ -1,8 +1,12 @@
 { pkgs, ... }: {
   security.rtkit.enable = true;
+  security.polkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+    alsa.enable = true;
+    wireplumber.enable = true;
   };
   services.xserver.xkb = {
     layout = "br";
@@ -24,5 +28,6 @@
     enable = true;
     wlr.enable = true;
     xdgOpenUsePortal = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
   };
 }

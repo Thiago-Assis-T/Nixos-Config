@@ -4,6 +4,14 @@
     enable = true;
     xwayland.enable = true;
     systemd = { enable = true; };
+    extraSessionVariables = {
+      TERM = "foot";
+      QT_QPA_PLATFORM = "wayland";
+      KDE_SESSION_VERSION = 5;
+      MOZ_ENABLE_WAYLAND = 1;
+      XDG_CURRENT_DESKTOP = "river";
+      XDG_SESSION_DESKTOP = "river";
+    };
     extraConfig =
       #bash
       ''
@@ -167,6 +175,5 @@
         rivertile -view-padding 6 -outer-padding 6 &
 
       '';
-    extraSessionVariables = { MOZ_ENABLE_WAYLAND = "1"; };
   };
 }
