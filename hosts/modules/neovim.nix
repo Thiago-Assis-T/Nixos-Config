@@ -8,14 +8,12 @@
     vimAlias = true;
     viAlias = true;
     wrapRc = true;
-
     diagnostic = {
       settings = {
         virtual_lines = { current_line = true; };
         virtual_text = true;
       };
     };
-
     extraPackages = with pkgs; [
       uutils-coreutils-noprefix
       deadnix
@@ -53,6 +51,28 @@
         };
       };
     };
+    keymaps = [
+      {
+        action = "<cmd>Telescope live_grep<CR>";
+        key = "<leader>fg";
+      }
+      {
+        action = "<cmd>Telescope find_files<CR>";
+        key = "<leader>ff";
+      }
+      {
+        action = "<cmd>Telescope git_commits<CR>";
+        key = "<leader>fg";
+      }
+      {
+        action = "<cmd>Telescope help_tags<CR>";
+        key = "<leader>fh";
+      }
+    ];
+    globals = {
+      mapleader = " ";
+      maplocalleader = " ";
+    };
     opts = {
       expandtab = true;
       shiftwidth = 8;
@@ -64,7 +84,6 @@
       register = "unnamedplus";
       providers.wl-copy.enable = true;
     };
-
     performance = {
       byteCompileLua = {
         enable = true;
@@ -75,6 +94,10 @@
     };
     colorschemes.ayu = { enable = true; };
     plugins = {
+      noice.enable = true;
+      trouble.enable = true;
+      todo-comments.enable = true;
+      ts-comments.enable = true;
       gitsigns.enable = true;
       treesitter = {
         enable = true;
@@ -177,6 +200,42 @@
       lsp-status.enable = true;
       lspkind.enable = true;
       lspsaga.enable = true;
+      telescope = {
+        enable = true;
+        extensions = { fzf-native = { enable = true; }; };
+        settings = {
+          defaults = {
+            vimgrep_arguments = [
+              "${pkgs.ripgrep}/bin/rg"
+              "-L"
+              "--color=never"
+              "--no-heading"
+              "--with-filename"
+              "--line-number"
+              "--column"
+              "--smart-case"
+              "--fixed-strings"
+            ];
+            selection_caret = "  ";
+            entry_prefix = "  ";
+            layout_strategy = "flex";
+            layout_config = { horizontal = { prompt_position = "top"; }; };
+            sorting_strategy = "ascending";
+            file_ignore_patterns = [
+              "^.git/"
+              "^.mypy_cache/"
+              "^__pycache__/"
+              "^output/"
+              "^data/"
+              "%.ipynb"
+            ];
+            set_env.COLORTERM = "truecolor";
+          };
+
+          pickers = { colorscheme = { enable_preview = true; }; };
+        };
+      };
+
       blink-cmp = {
         enable = true;
         settings = {
@@ -204,7 +263,6 @@
           };
         };
       };
-
       conform-nvim = {
         enable = true;
         settings = {
