@@ -75,6 +75,7 @@
     };
     colorschemes.ayu = { enable = true; };
     plugins = {
+      gitsigns.enable = true;
       treesitter = {
         enable = true;
         settings = {
